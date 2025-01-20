@@ -1,10 +1,11 @@
 import { processFontFamily } from "expo-font";
 import { Text, View, StyleSheet } from "react-native";
+import { OPENSANS_REGULAR } from "../../utils/const";
 
 const styles = StyleSheet.create({
   review: {
     fontSize: 30,
-    fontFamily: "OpenSans-Regular",
+    fontFamily: OPENSANS_REGULAR,
   },
 });
 const DetailScreen = () => {
