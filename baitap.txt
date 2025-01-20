@@ -1,0 +1,93 @@
+// bai 1
+import { StatusBar } from 'expo-status-bar';
+import { useState } from 'react';
+import { Children } from 'react';
+import {Button, StyleSheet, Text, TextInput, View, } from 'react-native';
+
+export default function App() {
+  // const [count, setCount] = useState<number>(0);
+  // const [name, setName] = useState<string>('');
+  // const [age, setAge] = useState<number>();
+  return (
+    <View style={styles.container}>
+
+      {/* Text,input, button */}
+      <View>
+        <Text style={styles.hello}>duy dang ngu
+          <Text style={styles.parent}>alooooo
+            <Text style={styles.children}>aaaaaaaaaaaaaaaaaaa</Text>
+          </Text>
+        </Text>
+       </View>
+       <View>
+        <Text 
+        style={styles.setTextInput1}>Name: = {name}</Text>
+        <TextInput 
+        style={styles.setTextInput2} placeholder="Input name" 
+        onChangeText={(value) => setName(value)}/>
+       </View>
+       <View>
+        <Text 
+        style={styles.setTextInput1}>age: = {age}</Text>
+        <TextInput 
+        style={styles.setTextInput2} placeholder="Input name" 
+        onChangeText={(value) => setAge(+value)}
+        keyboardType="numeric"
+        maxLength={2}
+        />
+       </View>
+       <Text style={styles.hello}>
+          count: {count}
+       </Text>
+       
+       <View style={styles.setButton}>
+       <Button 
+            color={"red"}
+            title = "click me"  onPress={() => setCount(count + 1)}      
+        />
+        <Button 
+            color={"blue"}
+            title = "Reset"  onPress={() => setCount(0)}      
+        />
+        </View>
+      <StatusBar style="auto" />
+      
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 40,
+    paddingHorizontal: 20,
+    backgroundColor: '#fff',
+    // alignItems: 'center',
+    // justifyContent: 'center',
+  },
+  hello: {
+    color: 'red',
+    fontSize: 20,
+    fontWeight: 'bold',
+    padding: 10
+  },
+  parent: {
+    color: 'blue',
+    fontSize: 40 
+  },
+  children: {
+    color: 'green',
+    fontSize: 20 
+  },
+  setButton: {
+    borderBottomEndRadius: 10,
+  },
+  setTextInput1: {
+    fontSize: 30,
+  },
+  setTextInput2: {
+    fontSize: 30,
+    borderColor: 'green',
+    borderWidth: 2,
+  },
+});
