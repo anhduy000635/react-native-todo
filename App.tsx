@@ -12,55 +12,56 @@ import {
 } from "react-native";
 
 export default function App() {
-  const [student, setStudent] = useState([
-    { id: 1, name: "Duy", age: 20 },
-    { id: 2, name: "Huy", age: 20 },
-    { id: 3, name: "Nam", age: 20 },
-    { id: 4, name: "Anh", age: 20 },
-    { id: 5, name: "Thanh", age: 20 },
-    { id: 6, name: "Dat", age: 20 },
-    { id: 7, name: "Quang", age: 20 },
-    { id: 8, name: "Minh", age: 20 },
-    { id: 9, name: "Thanh", age: 20 },
-    { id: 10, name: "Hieu", age: 20 },
-  ]);
-
-  // const [count, setCount] = useState<number>(0);
-  // const [name, setName] = useState<string>('');
-  // const [age, setAge] = useState<number>();
+  const [todo, setTodo] = useState("");
+  const [listTodo, setListTodo] = useState<ITodo[]>([]);
+  interface ITodo {
+    id: number;
+    name: string;
+  }
+  function randomTodo(min: number, max: number) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+  const handleAddTodo = () => {
+    if (!todo) return;
+    setListTodo([...listTodo, { id: randomTodo(1, 100), name: todo }]);
+    setTodo("");
+  };
   return (
     <View style={styles.container}>
-      <Text style={styles.hello}>Hello World</Text>
-      <FlatList
-        data={student}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => {
-          return (
-            <View style={styles.setScrollView}>
-              <Text>{item.name}</Text>
-            </View>
-          );
-        }}
-      />
+      {/* Header */}
+      <Text style={styles.header}>Todo APP</Text>
 
-      {/* Text,input, button
-      <View >
-        <ScrollView >
-          {student.map((item) => {
-            return (
-              <View key = {item.id} style={styles.setScrollView}>
-                <Text>{item.name}</Text>
-              </View>
-            )
-          })}
-        </ScrollView>
-       </View>
-      <StatusBar style="auto" /> */}
+      {/* Form */}
+      <View style={styles.body}>
+        <TextInput
+          value={todo}
+          style={styles.todoInput}
+          onChangeText={(value) => setTodo(value)}
+        />
+        <Button title="Add" onPress={handleAddTodo} />
+      </View>
+      {/* List Todo */}
+      <View style={styles.body}>
+        <FlatList
+          data={listTodo}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => {
+            return <Text style={styles.todoItem}>{item.name}</Text>;
+          }}
+        />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  header: {
+    backgroundColor: "orange",
+    paddingHorizontal: 20,
+    textAlign: "center",
+    paddingVertical: 10,
+    fontSize: 30,
+  },
   container: {
     flex: 1,
     paddingTop: 40,
@@ -69,37 +70,24 @@ const styles = StyleSheet.create({
     // alignItems: 'center',
     // justifyContent: 'center',
   },
-  setScrollView: {
-    fontSize: 100,
-    borderColor: "green",
-    borderWidth: 1,
-    marginBottom: 30,
-    padding: 50,
-    backgroundColor: "pink",
+  todoInput: {
+    height: 40,
+    borderBottomColor: "green",
+    borderBottomWidth: 1,
+    marginBottom: 10,
+    padding: 10,
+    marginHorizontal: 30,
+    margin: 15,
   },
-  hello: {
-    color: "red",
+  body: {
+    paddingHorizontal: 10,
+    marginBottom: 20,
+  },
+  todoItem: {
     fontSize: 20,
-    fontWeight: "bold",
+    marginBottom: 25,
+    borderWidth: 1,
+    borderColor: "green",
     padding: 10,
   },
-  // parent: {
-  //   color: "blue",
-  //   fontSize: 40,
-  // },
-  // children: {
-  //   color: "green",
-  //   fontSize: 20,
-  // },
-  // setButton: {
-  //   borderBottomEndRadius: 10,
-  // },
-  // setTextInput1: {
-  //   fontSize: 30,
-  // },
-  // setTextInput2: {
-  //   fontSize: 30,
-  //   borderColor: "green",
-  //   borderWidth: 2,
-  // },
 });
