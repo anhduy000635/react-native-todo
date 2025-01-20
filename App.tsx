@@ -77,12 +77,12 @@ const styles = StyleSheet.create({
     padding: 50,
     backgroundColor: "pink",
   },
-  // hello: {
-  //   color: "red",
-  //   fontSize: 20,
-  //   fontWeight: "bold",
-  //   padding: 10,
-  // },
+  hello: {
+    color: "red",
+    fontSize: 20,
+    fontWeight: "bold",
+    padding: 10,
+  },
   // parent: {
   //   color: "blue",
   //   fontSize: 40,
