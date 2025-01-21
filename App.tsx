@@ -44,7 +44,6 @@ const App = () => {
   return (
     <NavigationContainer>
       <RootStack />
-      <Button title="About" onPress={() => alert("hello")} />
     </NavigationContainer>
   );
 };
