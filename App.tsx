@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, Button } from "react-native";
 import HomeScreen from "./components/review/home";
 import DetailScreen from "./components/review/detail";
 import AboutScreen from "./components/review/about";
@@ -6,6 +6,9 @@ import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { OPENSANS_REGULAR } from "./utils/const";
+
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -23,13 +26,26 @@ const App = () => {
   if (!loaded && !error) {
     return null;
   }
+  const Stack = createNativeStackNavigator();
+  function RootStack() {
+    return (
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ title: "Trang chủ" }}
+        />
+
+        <Stack.Screen name="Details" component={DetailScreen} />
+      </Stack.Navigator>
+    );
+  }
 
   return (
-    <View>
-      <HomeScreen />
-      <DetailScreen />
-      <AboutScreen />
-    </View>
+    <NavigationContainer>
+      <RootStack />
+      <Button title="About" onPress={() => alert("hello")} />
+    </NavigationContainer>
   );
 };
 export default App;
