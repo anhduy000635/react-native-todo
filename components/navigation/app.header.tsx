@@ -11,12 +11,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 5,
     paddingVertical: 10,
     alignItems: "center",
-    borderWidth: 1,
-    borderColor: "black",
-    paddingTop: 40,
   },
   headerText: {
-    width: "100%",
+    flex: 1,
     marginLeft: 0,
     fontSize: 30,
     fontWeight: "600",

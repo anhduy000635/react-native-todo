@@ -19,7 +19,7 @@ function HomeLayout() {
       <Stack.Screen
         name="Details"
         component={DetailScreen}
-        options={{ title: "Thông tin ", header: () => <AppHeader /> }}
+        options={{ title: "Thông tin " }}
       />
     </Stack.Navigator>
   );

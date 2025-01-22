@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
   review: {
     fontSize: 30,
     // fontFamily: OPENSANS_REGULAR,
+    padding: 10,
   },
   reviewItem: {
     padding: 15,
